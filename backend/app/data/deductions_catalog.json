@@ -1,0 +1,170 @@
+{
+  "deductions": [
+    {
+      "section": "80C",
+      "title": "Investments & Expenses",
+      "max_limit": 150000,
+      "description": "Deduction for investments in PPF, ELSS, NSC, life insurance premium, tuition fees, home loan principal repayment, etc.",
+      "eligible_instruments": [
+        {"name": "Public Provident Fund (PPF)", "max": 150000, "lock_in": "15 years"},
+        {"name": "Equity Linked Savings Scheme (ELSS)", "max": 150000, "lock_in": "3 years"},
+        {"name": "National Savings Certificate (NSC)", "max": 150000, "lock_in": "5 years"},
+        {"name": "Life Insurance Premium", "max": 150000, "lock_in": "Varies"},
+        {"name": "Employee Provident Fund (EPF)", "max": 150000, "lock_in": "Till retirement"},
+        {"name": "Sukanya Samriddhi Yojana", "max": 150000, "lock_in": "21 years"},
+        {"name": "Tax Saving Fixed Deposit", "max": 150000, "lock_in": "5 years"},
+        {"name": "Senior Citizens Savings Scheme", "max": 150000, "lock_in": "5 years"},
+        {"name": "Home Loan Principal Repayment", "max": 150000, "lock_in": "N/A"},
+        {"name": "Tuition Fees (max 2 children)", "max": 150000, "lock_in": "N/A"},
+        {"name": "Stamp Duty & Registration Charges", "max": 150000, "lock_in": "N/A"}
+      ],
+      "regime": "old_only",
+      "documents_required": ["Investment proof", "Premium receipt", "Loan statement"]
+    },
+    {
+      "section": "80CCC",
+      "title": "Pension Fund Contribution",
+      "max_limit": 150000,
+      "description": "Deduction for contribution to pension funds. Combined limit with 80C.",
+      "regime": "old_only",
+      "documents_required": ["Pension contribution receipt"]
+    },
+    {
+      "section": "80CCD(1)",
+      "title": "NPS Employee Contribution",
+      "max_limit": 150000,
+      "description": "Employee contribution to National Pension System. Part of 80C combined limit. Max 10% of salary.",
+      "regime": "old_only",
+      "documents_required": ["NPS statement"]
+    },
+    {
+      "section": "80CCD(1B)",
+      "title": "Additional NPS Contribution",
+      "max_limit": 50000,
+      "description": "Additional deduction of ₹50,000 for NPS contribution, over and above 80C limit.",
+      "regime": "old_only",
+      "documents_required": ["NPS contribution proof"]
+    },
+    {
+      "section": "80CCD(2)",
+      "title": "Employer NPS Contribution",
+      "max_limit": -1,
+      "max_limit_note": "14% of salary (Central Govt) or 10% of salary (Others)",
+      "description": "Employer's contribution to NPS. No upper cap, but limited to percentage of salary. Available in both regimes.",
+      "regime": "both",
+      "documents_required": ["Form 16", "Salary slip"]
+    },
+    {
+      "section": "80D",
+      "title": "Medical Insurance Premium",
+      "max_limit": 100000,
+      "description": "Premium for medical insurance for self, family, and parents.",
+      "sub_limits": [
+        {"category": "Self & Family (below 60)", "limit": 25000},
+        {"category": "Self & Family (above 60)", "limit": 50000},
+        {"category": "Parents (below 60)", "limit": 25000},
+        {"category": "Parents (above 60)", "limit": 50000},
+        {"category": "Preventive Health Check-up", "limit": 5000, "note": "Within overall limit"}
+      ],
+      "regime": "old_only",
+      "documents_required": ["Insurance premium receipt", "Policy document"]
+    },
+    {
+      "section": "80DD",
+      "title": "Disabled Dependent",
+      "max_limit": 125000,
+      "description": "Maintenance of disabled dependent. ₹75,000 for 40-80% disability, ₹1,25,000 for severe disability (80%+).",
+      "regime": "old_only",
+      "documents_required": ["Medical certificate", "Form 10-IA"]
+    },
+    {
+      "section": "80E",
+      "title": "Education Loan Interest",
+      "max_limit": -1,
+      "max_limit_note": "No upper limit",
+      "description": "Interest paid on education loan for higher education. Available for 8 years from start of repayment.",
+      "regime": "old_only",
+      "documents_required": ["Loan interest certificate from bank"]
+    },
+    {
+      "section": "80G",
+      "title": "Donations to Charitable Institutions",
+      "max_limit": -1,
+      "max_limit_note": "50% or 100% of donation, subject to limits",
+      "description": "Donations to approved charitable institutions and funds.",
+      "deduction_categories": [
+        {"type": "100% without limit", "examples": ["PM National Relief Fund", "National Defence Fund"]},
+        {"type": "50% without limit", "examples": ["PM Drought Relief Fund"]},
+        {"type": "100% with 10% AGI limit", "examples": ["Local authority for family planning"]},
+        {"type": "50% with 10% AGI limit", "examples": ["Any approved charitable institution"]}
+      ],
+      "regime": "old_only",
+      "documents_required": ["Donation receipt with PAN of institution", "80G certificate"]
+    },
+    {
+      "section": "80GG",
+      "title": "Rent Paid (No HRA)",
+      "max_limit": 60000,
+      "max_limit_note": "₹5,000/month or 25% of total income (whichever is less)",
+      "description": "For individuals not receiving HRA. Least of: ₹5000/month, 25% of total income, or rent paid minus 10% of total income.",
+      "regime": "old_only",
+      "documents_required": ["Rent receipts", "Rental agreement"]
+    },
+    {
+      "section": "80TTA",
+      "title": "Savings Account Interest",
+      "max_limit": 10000,
+      "description": "Interest earned on savings bank account. For individuals below 60 years.",
+      "regime": "old_only",
+      "documents_required": ["Bank statement"]
+    },
+    {
+      "section": "80TTB",
+      "title": "Interest Income for Senior Citizens",
+      "max_limit": 50000,
+      "description": "Interest from deposits for senior citizens (60+). Replaces 80TTA for seniors.",
+      "regime": "old_only",
+      "documents_required": ["Bank/FD interest certificate"]
+    },
+    {
+      "section": "HRA",
+      "title": "House Rent Allowance",
+      "max_limit": -1,
+      "max_limit_note": "Calculated based on formula",
+      "description": "Exemption for HRA received. Least of: actual HRA, 50%/40% of salary, or rent paid minus 10% of salary.",
+      "calculation": {
+        "metro": "50% of basic salary",
+        "non_metro": "40% of basic salary",
+        "formula": "min(actual_hra, metro_or_non_metro_pct * basic, rent_paid - 0.1 * basic)"
+      },
+      "regime": "old_only",
+      "documents_required": ["Rent receipts", "Rental agreement", "Landlord PAN (if rent > ₹1L/year)"]
+    },
+    {
+      "section": "24(b)",
+      "title": "Home Loan Interest",
+      "max_limit": 200000,
+      "description": "Interest on home loan for self-occupied property. ₹2,00,000 limit for self-occupied, no limit for let-out property.",
+      "regime": "old_only",
+      "documents_required": ["Home loan interest certificate", "Property documents"]
+    },
+    {
+      "section": "LTA",
+      "title": "Leave Travel Allowance",
+      "max_limit": -1,
+      "max_limit_note": "Actual travel expenses",
+      "description": "Exemption for travel within India. Available twice in a block of 4 years.",
+      "regime": "old_only",
+      "documents_required": ["Travel tickets", "Boarding passes"]
+    }
+  ],
+  "deduction_tips": [
+    "Maximize Section 80C first — it offers the highest single deduction of ₹1.5 lakhs",
+    "If you're paying rent and don't receive HRA, claim 80GG deduction",
+    "NPS offers additional ₹50,000 deduction under 80CCD(1B) beyond 80C limit",
+    "Health insurance for parents (especially senior citizens) can save up to ₹50,000 extra",
+    "Education loan interest has no upper limit — claim the full amount",
+    "Home loan interest up to ₹2 lakhs is deductible under Section 24(b)",
+    "Donations under 80G can reduce taxes while supporting causes you care about"
+  ]
+}

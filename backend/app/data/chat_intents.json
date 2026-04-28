@@ -1,0 +1,317 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": [
+        "hello", "hi", "hey", "good morning", "good evening", "hi there",
+        "greetings", "what's up", "howdy", "hey there", "namaste",
+        "hello there", "good afternoon", "hola"
+      ],
+      "responses": [
+        "Hello! I'm TaxBot, your AI tax filing assistant. How can I help you today?",
+        "Hi there! Ready to help you with your tax filing. What would you like to know?",
+        "Namaste! I'm here to guide you through your tax filing process. Where shall we start?"
+      ],
+      "context": ""
+    },
+    {
+      "tag": "goodbye",
+      "patterns": [
+        "bye", "goodbye", "see you", "thanks bye", "quit", "exit",
+        "see you later", "good night", "take care", "thanks and bye"
+      ],
+      "responses": [
+        "Goodbye! Happy tax filing! Remember, the deadline is July 31st.",
+        "See you! Don't forget to verify your ITR after filing. Take care!",
+        "Bye! Feel free to come back anytime for tax help."
+      ],
+      "context": ""
+    },
+    {
+      "tag": "thanks",
+      "patterns": [
+        "thanks", "thank you", "that's helpful", "thanks a lot",
+        "appreciate it", "thank you so much", "great help", "thanks for the help"
+      ],
+      "responses": [
+        "You're welcome! Is there anything else about taxes I can help with?",
+        "Happy to help! Let me know if you have more tax-related questions.",
+        "Anytime! Tax planning is important, and I'm here to assist."
+      ],
+      "context": ""
+    },
+    {
+      "tag": "tax_regime",
+      "patterns": [
+        "which tax regime should I choose", "old vs new regime", "compare tax regimes",
+        "which regime is better", "tell me about old regime", "tell me about new regime",
+        "should I opt for new regime", "old regime benefits", "new regime benefits",
+        "tax regime comparison", "which regime saves more tax", "regime recommendation",
+        "help me choose regime", "difference between old and new regime"
+      ],
+      "responses": [
+        "Great question! The choice between old and new regime depends on your deductions. Let me analyze your profile. Can you tell me your annual income and total deductions?",
+        "I can help you compare both regimes! The new regime has lower rates but fewer deductions. Share your income details and I'll calculate which saves more.",
+        "Let me run our AI model to recommend the best regime for you. First, I'll need some details about your income and investments."
+      ],
+      "context": "regime_selection"
+    },
+    {
+      "tag": "tax_calculation",
+      "patterns": [
+        "calculate my tax", "how much tax do I owe", "tax liability",
+        "compute my tax", "what is my tax amount", "tax calculation",
+        "how to calculate income tax", "help me calculate tax",
+        "estimate my tax", "tax estimation", "how much tax should I pay"
+      ],
+      "responses": [
+        "I'd be happy to calculate your tax! Please provide your gross annual income and I'll walk you through the computation.",
+        "Let's calculate your tax step by step. What's your total annual income? I'll apply the appropriate slabs.",
+        "Sure! I'll need your income details to compute the tax. Shall we start with your salary income?"
+      ],
+      "context": "tax_calculation"
+    },
+    {
+      "tag": "deductions",
+      "patterns": [
+        "what deductions can I claim", "tell me about 80C", "section 80D",
+        "how to save tax", "tax saving options", "deduction sections",
+        "investment for tax saving", "80C investment options", "medical insurance deduction",
+        "home loan tax benefit", "education loan deduction", "NPS deduction",
+        "PPF deduction", "ELSS tax saving", "HRA exemption",
+        "list all deductions", "maximum deductions", "how to reduce tax"
+      ],
+      "responses": [
+        "There are several deductions available under the old regime! The main ones are: 80C (₹1.5L), 80D (₹25K-₹1L), 80E (Education Loan), 24(b) (₹2L Home Loan). Want details on any specific section?",
+        "Let me help you discover deductions you might be missing! Key sections include 80C, 80D, 80CCD(1B), 80E, 80G, and HRA. Which area interests you?",
+        "Great question! I can recommend personalized deductions based on your profile. Shall I run our AI recommendation engine?"
+      ],
+      "context": "deductions"
+    },
+    {
+      "tag": "filing_process",
+      "patterns": [
+        "how to file taxes", "tax filing steps", "guide me through filing",
+        "ITR filing process", "step by step filing", "help me file taxes",
+        "start filing", "begin tax filing", "walk me through filing",
+        "filing procedure", "how to submit ITR", "tax filing guide"
+      ],
+      "responses": [
+        "I'll guide you through the entire filing process step by step! We'll go through: 1) Personal Info → 2) Income Details → 3) Deductions → 4) Tax Computation → 5) Verification. Ready to start?",
+        "Let's file your taxes together! I'll use our AI-powered state-space search to find the optimal filing path for you. Shall we begin with your personal details?",
+        "Tax filing doesn't have to be stressful! I'll walk you through each step. First, let's gather your basic information."
+      ],
+      "context": "filing_process"
+    },
+    {
+      "tag": "document_upload",
+      "patterns": [
+        "upload documents", "I have Form 16", "upload salary slip",
+        "parse my documents", "extract from Form 16", "document upload",
+        "I want to upload Form 16", "scan my salary slip", "read my tax documents",
+        "extract tax information", "process my documents"
+      ],
+      "responses": [
+        "You can upload your tax documents and our AI will extract relevant information automatically! Supported formats: Form 16, Salary Slips, Bank Statements. Please use the document upload section.",
+        "Great! Our deep learning model can classify and extract data from your documents. Go to the Documents tab to upload your Form 16 or salary slip.",
+        "Upload your documents and I'll help extract key tax information using our AI-powered document processor!"
+      ],
+      "context": "document_upload"
+    },
+    {
+      "tag": "what_if",
+      "patterns": [
+        "what if I invest more", "tax simulator", "simulate tax",
+        "what if analysis", "if I claim HRA", "impact of investment",
+        "how much will I save if", "tax savings simulation",
+        "what happens if I invest in NPS", "simulate different scenarios"
+      ],
+      "responses": [
+        "Our What-If Tax Simulator lets you explore different scenarios! You can adjust income, deductions, and investments to see their tax impact in real-time.",
+        "Great idea! The simulator will show you exactly how different investment decisions affect your tax liability. Head to the Simulator tab!",
+        "Let's explore the possibilities! Tell me what scenario you'd like to simulate, or use our interactive simulator."
+      ],
+      "context": "what_if"
+    },
+    {
+      "tag": "hra_query",
+      "patterns": [
+        "how is HRA calculated", "HRA exemption formula", "HRA exemption",
+        "house rent allowance", "can I claim HRA", "HRA tax benefit",
+        "HRA calculation", "how much HRA can I claim", "rent deduction"
+      ],
+      "responses": [
+        "HRA exemption is the minimum of: 1) Actual HRA received, 2) 50% of basic (metro) or 40% (non-metro), 3) Rent paid minus 10% of basic salary. Want me to calculate yours?",
+        "The HRA exemption depends on your city, basic salary, and rent paid. It's available only under the old regime. Share your details and I'll compute it!"
+      ],
+      "context": "hra"
+    },
+    {
+      "tag": "income_sources",
+      "patterns": [
+        "I have multiple income sources", "salary and freelance income",
+        "rental income", "capital gains", "interest income",
+        "income from other sources", "business income", "dividend income",
+        "types of income", "different income heads"
+      ],
+      "responses": [
+        "Indian tax law classifies income under 5 heads: 1) Salary, 2) House Property, 3) Business/Profession, 4) Capital Gains, 5) Other Sources. Which ones apply to you?",
+        "I can help with all income types! Whether it's salary, rental income, capital gains, or freelance income. Tell me about your income sources."
+      ],
+      "context": "income"
+    },
+    {
+      "tag": "deadline",
+      "patterns": [
+        "when is the tax filing deadline", "last date to file ITR",
+        "filing deadline", "due date for ITR", "when should I file",
+        "tax filing last date", "penalty for late filing"
+      ],
+      "responses": [
+        "The deadline for filing ITR for FY 2024-25 is July 31, 2025 for individuals. Late filing attracts a penalty of ₹5,000 (₹1,000 if income < ₹5L).",
+        "Don't miss the July 31st deadline! Filing late means penalties and you lose the ability to carry forward losses. Let's get your filing done on time!"
+      ],
+      "context": "deadline"
+    },
+    {
+      "tag": "itr_form",
+      "patterns": [
+        "which ITR form should I use", "ITR-1 or ITR-2", "ITR form selection",
+        "correct ITR form", "which form to file", "ITR-1", "ITR-2",
+        "ITR-3", "ITR-4", "Sahaj form"
+      ],
+      "responses": [
+        "The form depends on your income type: ITR-1 (Sahaj) for salary up to ₹50L, ITR-2 for multiple properties/capital gains, ITR-3 for business income, ITR-4 (Sugam) for presumptive business. What's your situation?",
+        "Let me help you choose the right form! Tell me about your income sources and I'll recommend the appropriate ITR form."
+      ],
+      "context": "itr_form"
+    },
+    {
+      "tag": "audit_risk",
+      "patterns": [
+        "will I be audited", "audit risk", "tax audit",
+        "chances of audit", "am I at risk of audit",
+        "what triggers an audit", "audit probability"
+      ],
+      "responses": [
+        "I can assess your audit risk using our Bayesian network model! Key factors include: high deductions relative to income, large cash transactions, and mismatched TDS. Share your details for analysis.",
+        "Our AI uses probabilistic reasoning to estimate audit probability. Factors like deduction-to-income ratio, regime choice, and income level are considered."
+      ],
+      "context": "audit"
+    },
+    {
+      "tag": "tax_refund",
+      "patterns": [
+        "how to get tax refund", "will I get a refund", "TDS refund",
+        "excess tax paid", "refund status", "claim refund",
+        "tax refund process", "when will I get refund"
+      ],
+      "responses": [
+        "If your TDS exceeds your actual tax liability, you're eligible for a refund! File your ITR accurately, and the refund is usually processed within 20-45 days of e-verification.",
+        "Refunds are automatic once your ITR is processed and verified. Make sure your bank account is pre-validated on the income tax portal for faster processing."
+      ],
+      "context": "refund"
+    },
+    {
+      "tag": "tax_terms",
+      "patterns": [
+        "what is gross income", "what is taxable income", "explain TDS",
+        "what is assessment year", "financial year meaning",
+        "what is PAN", "explain surcharge", "what is cess",
+        "define tax terms", "tax terminology"
+      ],
+      "responses": [
+        "Let me explain! Gross Income = total earnings. Taxable Income = gross - deductions. TDS = Tax Deducted at Source (advance tax by employer/bank). What specific term would you like me to explain?",
+        "I have a comprehensive tax glossary! AY is the year you file taxes for the previous FY. Cess (4%) is charged on total tax. Want me to explain any specific term?"
+      ],
+      "context": "glossary"
+    },
+    {
+      "tag": "investment_advice",
+      "patterns": [
+        "where should I invest for tax saving", "best tax saving investments",
+        "ELSS vs PPF", "invest in NPS or PPF", "tax saving mutual funds",
+        "investment options for tax", "best 80C investment"
+      ],
+      "responses": [
+        "For tax saving, consider: ELSS (3yr lock-in, market returns), PPF (15yr, guaranteed ~7.1%), NPS (retirement + extra ₹50K deduction), Tax FD (5yr, safe). Your choice depends on risk appetite and time horizon.",
+        "Let me run our recommendation engine! Based on your age and income, I can suggest the optimal investment mix for maximum tax savings. Share your profile details?"
+      ],
+      "context": "investment"
+    },
+    {
+      "tag": "new_regime_details",
+      "patterns": [
+        "new regime slabs", "new regime tax rates", "new regime deductions allowed",
+        "what deductions work in new regime", "new regime standard deduction",
+        "benefits of new regime", "new regime for salaried"
+      ],
+      "responses": [
+        "New Regime (FY 2024-25) slabs: 0-3L: 0%, 3-7L: 5%, 7-10L: 10%, 10-12L: 15%, 12-15L: 20%, 15L+: 30%. Standard deduction of ₹75,000 is allowed. Most other deductions are NOT available.",
+        "The new regime offers lower tax rates but very limited deductions. Only standard deduction (₹75K) and employer NPS contribution are allowed. It's beneficial if your total deductions under old regime are less than ~₹3.75 lakhs."
+      ],
+      "context": "new_regime"
+    },
+    {
+      "tag": "old_regime_details",
+      "patterns": [
+        "old regime slabs", "old regime tax rates", "old regime benefits",
+        "why choose old regime", "old regime for high deductions"
+      ],
+      "responses": [
+        "Old Regime slabs: 0-2.5L: 0%, 2.5-5L: 5%, 5-10L: 20%, 10L+: 30%. Standard deduction ₹50,000. All deductions (80C, 80D, HRA, etc.) are available. Best if your deductions exceed ~₹3.75 lakhs.",
+        "The old regime allows all deductions and exemptions. If you have significant investments, home loan, HRA, or medical insurance, the old regime might save you more. Want me to compare for your specific case?"
+      ],
+      "context": "old_regime"
+    },
+    {
+      "tag": "error_filing",
+      "patterns": [
+        "error in ITR", "mistake in filing", "wrong ITR filed",
+        "can I revise ITR", "correction in tax return", "revised return",
+        "made a mistake in filing"
+      ],
+      "responses": [
+        "Don't worry! You can file a revised return under Section 139(5) before the end of the relevant assessment year (March 31st). You can revise as many times as needed.",
+        "Mistakes happen! File a revised ITR selecting 'Revised Return' under Section 139(5). Make sure to use the original ITR acknowledgment number."
+      ],
+      "context": "revision"
+    },
+    {
+      "tag": "senior_citizen",
+      "patterns": [
+        "tax for senior citizens", "senior citizen tax benefit",
+        "tax exemption for elderly", "age 60 tax benefit",
+        "super senior citizen tax"
+      ],
+      "responses": [
+        "Senior citizens (60-80) get higher basic exemption limit of ₹3L under old regime. Super senior citizens (80+) get ₹5L. They also get ₹50K deduction under 80TTB for interest income.",
+        "There are special benefits for senior citizens including higher exemption limits, ₹50K interest deduction (80TTB), and higher medical insurance deduction (₹50K vs ₹25K)."
+      ],
+      "context": "senior_citizen"
+    },
+    {
+      "tag": "capital_gains",
+      "patterns": [
+        "capital gains tax", "STCG tax rate", "LTCG tax rate",
+        "stock market tax", "mutual fund tax", "property sale tax",
+        "how to calculate capital gains", "indexation benefit"
+      ],
+      "responses": [
+        "Capital gains tax: STCG on equity: 15%, LTCG on equity >₹1L: 10%, STCG on others: as per slab, LTCG on property/debt: 20% with indexation. Which type of capital gain do you have?",
+        "Capital gains depend on the asset type and holding period. Equity (>12 months = LTCG), Property (>24 months = LTCG). Want me to calculate your capital gains tax?"
+      ],
+      "context": "capital_gains"
+    },
+    {
+      "tag": "default_fallback",
+      "patterns": [],
+      "responses": [
+        "I'm not sure I understood that. Could you rephrase? I can help with tax calculations, regime comparison, deductions, filing process, and document processing.",
+        "I didn't quite catch that. I specialize in Indian income tax. Try asking about tax calculation, deductions, filing steps, or regime comparison.",
+        "Could you elaborate? I'm best at helping with: tax filing, regime selection, deduction optimization, document processing, and what-if analysis."
+      ],
+      "context": ""
+    }
+  ]
+}

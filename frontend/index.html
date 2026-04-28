@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI-Powered Intelligent Tax Filing Assistant with Conversational Chatbot — File your Indian income taxes with AI guidance.">
+    <title>TaxBot AI — Intelligent Tax Filing Assistant</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Plotly for Charts -->
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/chat.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+    <!-- ═══════════════════ NAVIGATION ═══════════════════ -->
+    <nav id="main-nav" class="glass-nav">
+        <div class="nav-brand">
+            <div class="brand-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+            </div>
+            <span class="brand-text">TaxBot<span class="brand-ai">AI</span></span>
+        </div>
+        <div class="nav-tabs" id="nav-tabs">
+            <button class="nav-tab active" data-tab="home" id="nav-home">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                <span>Tax Filing</span>
+            </button>
+            <button class="nav-tab" data-tab="chat" id="nav-chat">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                <span>AI Chatbot</span>
+            </button>
+            <button class="nav-tab" data-tab="dashboard" id="nav-dashboard">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                <span>Dashboard</span>
+            </button>
+            <button class="nav-tab" data-tab="simulator" id="nav-simulator">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                <span>Simulator</span>
+            </button>
+            <button class="nav-tab" data-tab="documents" id="nav-documents">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                <span>Documents</span>
+            </button>
+        </div>
+        <div class="nav-status">
+            <div class="status-dot"></div>
+            <span id="model-status-text">AI Ready</span>
+        </div>
+    </nav>
+
+    <!-- ═══════════════════ MAIN CONTENT ═══════════════════ -->
+    <main id="main-content">
+
+        <!-- ──── HOME / TAX FILING TAB ──── -->
+        <section id="tab-home" class="tab-content active">
+            <div class="hero-section">
+                <div class="hero-glow"></div>
+                <h1 class="hero-title">
+                    <span class="gradient-text">AI-Powered</span> Tax Filing
+                </h1>
+                <p class="hero-subtitle">
+                    File your Indian income taxes intelligently with our AI assistant.
+                    Machine learning recommends your optimal regime. NLP answers your questions.
+                    Deep learning reads your documents.
+                </p>
+                <div class="hero-stats">
+                    <div class="stat-card glass-card">
+                        <div class="stat-number" id="stat-models">7</div>
+                        <div class="stat-label">AI Models</div>
+                    </div>
+                    <div class="stat-card glass-card">
+                        <div class="stat-number" id="stat-accuracy">95%</div>
+                        <div class="stat-label">Accuracy</div>
+                    </div>
+                    <div class="stat-card glass-card">
+                        <div class="stat-number" id="stat-deductions">15+</div>
+                        <div class="stat-label">Deduction Sections</div>
+                    </div>
+                    <div class="stat-card glass-card">
+                        <div class="stat-number">FY 24-25</div>
+                        <div class="stat-label">Latest Slabs</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tax Filing Form -->
+            <div class="section-container">
+                <h2 class="section-title">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                    Quick Tax Calculator
+                </h2>
+                <form id="tax-form" class="tax-form">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="input-name">Full Name</label>
+                            <input type="text" id="input-name" placeholder="As per PAN card" value="Avnish Kumar">
+                        </div>
+                        <div class="form-group">
+                            <label for="input-age">Age</label>
+                            <input type="number" id="input-age" placeholder="Years" value="28" min="18" max="100">
+                        </div>
+                        <div class="form-group">
+                            <label for="input-income">Annual Income (₹)</label>
+                            <input type="number" id="input-income" placeholder="Gross annual income" value="1200000">
+                        </div>
+                        <div class="form-group">
+                            <label for="input-employment">Employment Type</label>
+                            <select id="input-employment">
+                                <option value="salaried" selected>Salaried</option>
+                                <option value="self_employed">Self-Employed</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="input-basic">Basic Salary (₹)</label>
+                            <input type="number" id="input-basic" placeholder="Annual basic" value="600000">
+                        </div>
+                        <div class="form-group">
+                            <label for="input-hra">HRA Received (₹)</label>
+                            <input type="number" id="input-hra" placeholder="Annual HRA" value="300000">
+                        </div>
+                        <div class="form-group">
+                            <label for="input-rent">Rent Paid (₹/year)</label>
+                            <input type="number" id="input-rent" placeholder="Annual rent" value="240000">
+                        </div>
+                        <div class="form-group">
+                            <label for="input-metro">Metro City?</label>
+                            <select id="input-metro">
+                                <option value="true" selected>Yes (Delhi/Mumbai/etc)</option>
+                                <option value="false">No</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <h3 class="form-section-title">💰 Deductions & Investments</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="input-80c">Section 80C (₹)</label>
+                            <input type="number" id="input-80c" placeholder="Max ₹1,50,000" value="150000" max="150000">
+                        </div>
+                        <div class="form-group">
+                            <label for="input-80d">Section 80D — Medical (₹)</label>
+                            <input type="number" id="input-80d" placeholder="Insurance premium" value="25000">
+                        </div>
+                        <div class="form-group">
+                            <label for="input-homeloan">Home Loan Interest (₹)</label>
+                            <input type="number" id="input-homeloan" placeholder="Max ₹2,00,000" value="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="input-eduloan">Education Loan Interest (₹)</label>
+                            <input type="number" id="input-eduloan" placeholder="No limit" value="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="input-nps">NPS — 80CCD(1B) (₹)</label>
+                            <input type="number" id="input-nps" placeholder="Max ₹50,000" value="50000" max="50000">
+                        </div>
+                        <div class="form-group">
+                            <label for="input-donations">Donations — 80G (₹)</label>
+                            <input type="number" id="input-donations" placeholder="Donations" value="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="input-savings-interest">Savings Interest (₹)</label>
+                            <input type="number" id="input-savings-interest" placeholder="Bank interest" value="12000">
+                        </div>
+                        <div class="form-group">
+                            <label for="input-other-income">Other Income (₹)</label>
+                            <input type="number" id="input-other-income" placeholder="Freelance, etc." value="0">
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" id="btn-calculate" class="btn btn-primary pulse-btn">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                            Calculate Tax & Get AI Recommendations
+                        </button>
+                        <button type="button" id="btn-regime" class="btn btn-secondary">
+                            🤖 AI Regime Recommendation
+                        </button>
+                        <button type="button" id="btn-deductions" class="btn btn-secondary">
+                            💡 Smart Deduction Tips
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Results Section -->
+                <div id="results-section" class="results-section hidden">
+                    <div id="results-content"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ──── CHATBOT TAB ──── -->
+        <section id="tab-chat" class="tab-content">
+            <div class="chat-container">
+                <div class="chat-header glass-card">
+                    <div class="chat-avatar">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+                            <line x1="9" y1="9" x2="9.01" y2="9"/>
+                            <line x1="15" y1="9" x2="15.01" y2="9"/>
+                        </svg>
+                    </div>
+                    <div class="chat-header-info">
+                        <h2>TaxBot AI</h2>
+                        <p>Your AI Tax Filing Assistant • NLP + Transformer-Inspired Architecture</p>
+                    </div>
+                    <button id="btn-chat-reset" class="btn btn-ghost" title="Reset conversation">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+                    </button>
+                </div>
+
+                <div class="chat-messages" id="chat-messages">
+                    <div class="chat-welcome">
+                        <div class="welcome-icon">🤖</div>
+                        <h3>Welcome to TaxBot AI!</h3>
+                        <p>I'm your intelligent tax filing assistant powered by NLP and deep learning.
+                        I can help you with tax calculations, regime comparison, deductions, filing steps, and more!</p>
+                        <div class="welcome-suggestions">
+                            <button class="suggestion-chip" onclick="sendSuggestion('Hello, help me file my taxes')">👋 Start Filing</button>
+                            <button class="suggestion-chip" onclick="sendSuggestion('Which tax regime should I choose?')">📊 Compare Regimes</button>
+                            <button class="suggestion-chip" onclick="sendSuggestion('What deductions can I claim?')">💰 Explore Deductions</button>
+                            <button class="suggestion-chip" onclick="sendSuggestion('Calculate my tax')">🧮 Calculate Tax</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chat-input-container">
+                    <div class="chat-input-wrapper glass-card">
+                        <input type="text" id="chat-input" placeholder="Ask me anything about taxes..." autocomplete="off">
+                        <button id="btn-chat-send" class="btn-send">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                        </button>
+                    </div>
+                    <div class="chat-meta">
+                        <span id="chat-intent-display">Intent: waiting...</span>
+                        <span id="chat-confidence-display">Confidence: —</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ──── DASHBOARD TAB ──── -->
+        <section id="tab-dashboard" class="tab-content">
+            <div class="section-container">
+                <h2 class="section-title">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                    AI Analytics Dashboard
+                </h2>
+                <p class="section-desc">Interactive Plotly visualizations powered by your tax data.</p>
+
+                <div class="dashboard-grid">
+                    <div class="chart-card glass-card">
+                        <h3 class="chart-title">📊 Income vs Deductions</h3>
+                        <div id="chart-income-deductions" class="chart-container"></div>
+                    </div>
+                    <div class="chart-card glass-card">
+                        <h3 class="chart-title">🥧 Tax Breakdown by Regime</h3>
+                        <div id="chart-tax-breakdown" class="chart-container"></div>
+                    </div>
+                    <div class="chart-card glass-card">
+                        <h3 class="chart-title">📈 Regime Comparison</h3>
+                        <div id="chart-regime-comparison" class="chart-container"></div>
+                    </div>
+                    <div class="chart-card glass-card">
+                        <h3 class="chart-title">🔍 A* Filing Path (State-Space Search)</h3>
+                        <div id="chart-filing-path" class="chart-container filing-path-container"></div>
+                    </div>
+                </div>
+
+                <button id="btn-refresh-dashboard" class="btn btn-primary" style="margin-top:1.5rem;">
+                    🔄 Refresh Dashboard with Current Data
+                </button>
+            </div>
+        </section>
+
+        <!-- ──── SIMULATOR TAB ──── -->
+        <section id="tab-simulator" class="tab-content">
+            <div class="section-container">
+                <h2 class="section-title">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                    What-If Tax Simulator
+                </h2>
+                <p class="section-desc">Explore how different investment & deduction decisions impact your tax liability in real-time.</p>
+
+                <div class="simulator-layout">
+                    <div class="simulator-controls glass-card">
+                        <h3>Adjust Parameters</h3>
+                        <div class="slider-group">
+                            <label>Annual Income: <span id="sim-income-val" class="slider-val">₹12,00,000</span></label>
+                            <input type="range" id="sim-income" min="300000" max="5000000" step="50000" value="1200000" class="slider">
+                        </div>
+                        <div class="slider-group">
+                            <label>80C Investments: <span id="sim-80c-val" class="slider-val">₹1,50,000</span></label>
+                            <input type="range" id="sim-80c" min="0" max="150000" step="10000" value="150000" class="slider">
+                        </div>
+                        <div class="slider-group">
+                            <label>80D Medical: <span id="sim-80d-val" class="slider-val">₹25,000</span></label>
+                            <input type="range" id="sim-80d" min="0" max="100000" step="5000" value="25000" class="slider">
+                        </div>
+                        <div class="slider-group">
+                            <label>NPS (80CCD): <span id="sim-nps-val" class="slider-val">₹50,000</span></label>
+                            <input type="range" id="sim-nps" min="0" max="50000" step="5000" value="50000" class="slider">
+                        </div>
+                        <div class="slider-group">
+                            <label>Home Loan Interest: <span id="sim-hl-val" class="slider-val">₹0</span></label>
+                            <input type="range" id="sim-hl" min="0" max="200000" step="10000" value="0" class="slider">
+                        </div>
+                        <div class="slider-group">
+                            <label>HRA Received: <span id="sim-hra-val" class="slider-val">₹3,00,000</span></label>
+                            <input type="range" id="sim-hra" min="0" max="500000" step="10000" value="300000" class="slider">
+                        </div>
+                        <button id="btn-simulate" class="btn btn-primary" style="width:100%;margin-top:1rem;">
+                            ⚡ Run Simulation
+                        </button>
+                    </div>
+
+                    <div class="simulator-results">
+                        <div class="sim-result-cards">
+                            <div class="sim-card glass-card old-regime-card">
+                                <div class="sim-card-label">Old Regime</div>
+                                <div class="sim-card-amount" id="sim-old-tax">₹0</div>
+                                <div class="sim-card-rate" id="sim-old-rate">0% effective</div>
+                            </div>
+                            <div class="sim-card glass-card new-regime-card">
+                                <div class="sim-card-label">New Regime</div>
+                                <div class="sim-card-amount" id="sim-new-tax">₹0</div>
+                                <div class="sim-card-rate" id="sim-new-rate">0% effective</div>
+                            </div>
+                            <div class="sim-card glass-card savings-card">
+                                <div class="sim-card-label">You Save</div>
+                                <div class="sim-card-amount" id="sim-savings">₹0</div>
+                                <div class="sim-card-rate" id="sim-best-regime">with — regime</div>
+                            </div>
+                        </div>
+                        <div class="chart-card glass-card" style="margin-top:1.5rem;">
+                            <h3 class="chart-title">📊 Real-Time Comparison</h3>
+                            <div id="chart-simulator" class="chart-container"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ──── DOCUMENTS TAB ──── -->
+        <section id="tab-documents" class="tab-content">
+            <div class="section-container">
+                <h2 class="section-title">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                    AI Document Processor
+                </h2>
+                <p class="section-desc">Upload tax documents (Form 16, salary slips) and let our Deep Learning model classify and extract data automatically.</p>
+
+                <div class="docs-layout">
+                    <div class="upload-zone glass-card" id="upload-zone">
+                        <div class="upload-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                        </div>
+                        <p>Drag & drop your document here, or <span class="upload-browse">browse</span></p>
+                        <p class="upload-hint">Supports: Form 16, Salary Slips, Bank Statements (text files)</p>
+                        <input type="file" id="file-input" accept=".txt,.csv,.pdf" hidden>
+                    </div>
+
+                    <div class="doc-alternative glass-card">
+                        <h3>📝 Or paste document text</h3>
+                        <textarea id="doc-text-input" placeholder="Paste your Form 16 or salary slip text content here..." rows="8"></textarea>
+                        <div style="display:flex;gap:0.75rem;margin-top:1rem;">
+                            <button id="btn-classify-doc" class="btn btn-primary">🧠 Classify Document</button>
+                            <button id="btn-extract-doc" class="btn btn-secondary">📋 Extract Data</button>
+                            <button id="btn-load-sample" class="btn btn-ghost">📄 Load Sample Form 16</button>
+                        </div>
+                    </div>
+
+                    <div id="doc-results" class="doc-results hidden">
+                        <div id="doc-results-content"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ═══════════════════ FOOTER ═══════════════════ -->
+    <footer class="app-footer">
+        <div class="footer-content">
+            <p>🤖 AI Tax Filing Assistant v1.0.0 — Built with FastAPI, scikit-learn, TensorFlow, NLTK, Plotly</p>
+            <p class="footer-disclaimer">⚠️ AI recommendations are for informational purposes. Consult a CA for professional tax advice.</p>
+            <div class="footer-badges">
+                <span class="badge">A* Search</span>
+                <span class="badge">Random Forest</span>
+                <span class="badge">Gradient Boosting</span>
+                <span class="badge">Bayesian Network</span>
+                <span class="badge">Deep Learning</span>
+                <span class="badge">NLP</span>
+                <span class="badge">Generative AI</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/js/api.js"></script>
+    <script src="/js/app.js"></script>
+    <script src="/js/chat.js"></script>
+    <script src="/js/dashboard.js"></script>
+    <script src="/js/simulator.js"></script>
+    <script src="/js/document.js"></script>
+</body>
+</html>

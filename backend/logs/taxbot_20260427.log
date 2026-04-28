@@ -1,0 +1,8 @@
+2026-04-27 15:16:50 | INFO     | TaxAssistant.main | main:71 | 🚀 Starting AI Tax Filing Assistant v1.0.0
+2026-04-27 15:16:50 | INFO     | TaxAssistant.main | main:76 | ✅ Tax slabs loaded
+2026-04-27 15:16:50 | INFO     | TaxAssistant.main | main:81 | ✅ Deduction catalog loaded
+2026-04-27 15:16:52 | INFO     | TaxAssistant.main | main:87 | ✅ Regime classifier loaded
+2026-04-27 15:16:52 | INFO     | TaxAssistant.main | main:94 | ✅ Liability predictor loaded
+2026-04-27 15:16:52 | INFO     | TaxAssistant.main | main:102 | ✅ Document classifier loaded
+2026-04-27 15:16:52 | INFO     | TaxAssistant.main | main:108 | ✅ Chatbot model available
+2026-04-27 15:16:52 | INFO     | TaxAssistant.main | main:112 | 🎉 All systems ready! Server is running.

@@ -1,0 +1,61 @@
+{
+  "financial_year": "2024-25",
+  "assessment_year": "2025-26",
+  "old_regime": {
+    "name": "Old Tax Regime (Section 115BAC opt-out)",
+    "slabs": [
+      {"min": 0, "max": 250000, "rate": 0, "label": "Up to ₹2,50,000"},
+      {"min": 250001, "max": 500000, "rate": 5, "label": "₹2,50,001 - ₹5,00,000"},
+      {"min": 500001, "max": 1000000, "rate": 20, "label": "₹5,00,001 - ₹10,00,000"},
+      {"min": 1000001, "max": 999999999, "rate": 30, "label": "Above ₹10,00,000"}
+    ],
+    "standard_deduction": 50000,
+    "rebate_87a_limit": 500000,
+    "rebate_87a_max": 12500,
+    "surcharge": [
+      {"min": 5000001, "max": 10000000, "rate": 10},
+      {"min": 10000001, "max": 20000000, "rate": 15},
+      {"min": 20000001, "max": 50000000, "rate": 25},
+      {"min": 50000001, "max": 999999999, "rate": 37}
+    ],
+    "cess_rate": 4,
+    "deductions_allowed": true,
+    "hra_exemption_allowed": true,
+    "lta_allowed": true
+  },
+  "new_regime": {
+    "name": "New Tax Regime (Section 115BAC - Default)",
+    "slabs": [
+      {"min": 0, "max": 300000, "rate": 0, "label": "Up to ₹3,00,000"},
+      {"min": 300001, "max": 700000, "rate": 5, "label": "₹3,00,001 - ₹7,00,000"},
+      {"min": 700001, "max": 1000000, "rate": 10, "label": "₹7,00,001 - ₹10,00,000"},
+      {"min": 1000001, "max": 1200000, "rate": 15, "label": "₹10,00,001 - ₹12,00,000"},
+      {"min": 1200001, "max": 1500000, "rate": 20, "label": "₹12,00,001 - ₹15,00,000"},
+      {"min": 1500001, "max": 999999999, "rate": 30, "label": "Above ₹15,00,000"}
+    ],
+    "standard_deduction": 75000,
+    "rebate_87a_limit": 700000,
+    "rebate_87a_max": 25000,
+    "surcharge": [
+      {"min": 5000001, "max": 10000000, "rate": 10},
+      {"min": 10000001, "max": 20000000, "rate": 15},
+      {"min": 20000001, "max": 999999999, "rate": 25}
+    ],
+    "cess_rate": 4,
+    "deductions_allowed": false,
+    "hra_exemption_allowed": false,
+    "lta_allowed": false,
+    "allowed_deductions": ["80CCD_employer", "80CCD_1B_partial", "standard_deduction"]
+  },
+  "professional_tax_max": 2500,
+  "section_234_interest_rate": 1,
+  "tds_sections": {
+    "192": "Salary",
+    "194A": "Interest (other than securities)",
+    "194B": "Lottery winnings",
+    "194C": "Contractor payments",
+    "194H": "Commission/Brokerage",
+    "194I": "Rent",
+    "194J": "Professional fees"
+  }
+}
