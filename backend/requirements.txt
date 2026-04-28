@@ -1,22 +1,13 @@
-# AI-Powered Intelligent Tax Filing Assistant
-# Python Dependencies
-
-# Web Framework
 fastapi==0.104.1
 uvicorn[standard]==0.24.0
 python-multipart==0.0.6
 
-# Machine Learning
-scikit-learn==1.3.2
-pandas==2.1.4
-numpy==1.26.2
+scikit-learn==1.2.2
+pandas==2.0.3
+numpy==1.24.4
 
-# NLP
 nltk==3.8.1
-
-# Visualization (for Plotly chart data)
 plotly==5.18.0
 
-# Utilities
 python-dotenv==1.0.0
 pydantic==2.5.2
