@@ -4,7 +4,8 @@
  */
 
 const API = {
-    BASE_URL: '',
+    // Replace with your actual Render backend URL after deployment
+    BASE_URL: 'https://taxfilling-assistant-backend.onrender.com',
 
     async request(endpoint, method = 'GET', data = null) {
         const options = {

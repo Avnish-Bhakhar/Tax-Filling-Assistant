@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: taxfilling-assistant-backend
+    env: python
+    buildCommand: ./backend/build.sh
+    startCommand: cd backend && uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: APP_DEBUG
+        value: "false"
+      - key: PYTHON_VERSION
+        value: 3.11.0

@@ -20,7 +20,7 @@ class Config:
 
     # Server
     HOST = os.getenv("APP_HOST", "0.0.0.0")
-    PORT = int(os.getenv("APP_PORT", "8000"))
+    PORT = int(os.getenv("PORT", os.getenv("APP_PORT", "8000")))
     DEBUG = os.getenv("APP_DEBUG", "true").lower() == "true"
 
     # Frontend
