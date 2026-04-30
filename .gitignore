@@ -1,0 +1,33 @@
+# Virtual environments
+backend/venv/
+.venv/
+venv/
+env/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+backend/logs/
+
+# Uploads
+backend/uploads/
+
+# Trained models are kept in git for faster cold starts
+
+# IDE
+.vscode/
+.idea/
+
+# Node
+node_modules/
