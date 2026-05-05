@@ -25,14 +25,30 @@ async function initDashboard() {
     });
 }
 
-const plotlyLayout = {
-    paper_bgcolor: 'rgba(0,0,0,0)',
-    plot_bgcolor: 'rgba(0,0,0,0)',
-    font: { family: 'Inter, sans-serif', color: '#94a3b8', size: 12 },
-    margin: { t: 40, r: 20, b: 60, l: 60 },
-    showlegend: true,
-    legend: { font: { color: '#94a3b8' } }
-};
+function getPlotlyColors() {
+    const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
+    return {
+        textColor: isDark ? '#8b95a8' : '#5a6178',
+        titleColor: isDark ? '#e8ecf4' : '#1a1d2e',
+        gridColor: isDark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.06)',
+        bgColor: 'rgba(0,0,0,0)',
+        pieBorder: isDark ? 'rgba(15,20,32,1)' : 'rgba(245,246,250,1)',
+        barLine: isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.08)',
+        highlight: isDark ? '#2ec4a4' : '#1aab8a'
+    };
+}
+
+function getPlotlyLayout() {
+    const c = getPlotlyColors();
+    return {
+        paper_bgcolor: c.bgColor,
+        plot_bgcolor: c.bgColor,
+        font: { family: 'Inter, sans-serif', color: c.textColor, size: 12 },
+        margin: { t: 40, r: 20, b: 60, l: 60 },
+        showlegend: true,
+        legend: { font: { color: c.textColor } }
+    };
+}
 
 const plotlyConfig = { responsive: true, displayModeBar: false };
 
@@ -42,24 +58,25 @@ async function renderIncomeDeductionsChart(formData) {
         if (result.status !== 'success') return;
 
         const d = result.data;
+        const c = getPlotlyColors();
         const trace = {
             x: d.categories,
             y: d.values,
             type: 'bar',
             marker: {
                 color: d.colors,
-                line: { color: 'rgba(255,255,255,0.1)', width: 1 }
+                line: { color: c.barLine, width: 1 }
             },
             text: d.values.map(v => '₹' + v.toLocaleString('en-IN')),
             textposition: 'outside',
-            textfont: { size: 10, color: '#94a3b8' }
+            textfont: { size: 10, color: c.textColor }
         };
 
         const layout = {
-            ...plotlyLayout,
-            title: { text: 'Income vs Deductions', font: { size: 14, color: '#f1f5f9' } },
-            xaxis: { tickangle: -30, gridcolor: 'rgba(255,255,255,0.05)' },
-            yaxis: { gridcolor: 'rgba(255,255,255,0.05)', title: 'Amount (₹)' }
+            ...getPlotlyLayout(),
+            title: { text: 'Income vs Deductions', font: { size: 14, color: c.titleColor } },
+            xaxis: { tickangle: -30, gridcolor: c.gridColor },
+            yaxis: { gridcolor: c.gridColor, title: 'Amount (₹)' }
         };
 
         Plotly.newPlot('chart-income-deductions', [trace], layout, plotlyConfig);
@@ -75,6 +92,7 @@ async function renderTaxBreakdownChart(formData) {
         if (result.status !== 'success') return;
 
         const d = result.data;
+        const c = getPlotlyColors();
         const oldTax = d.old_regime?.total_tax || 0;
         const newTax = d.new_regime?.total_tax || 0;
 
@@ -84,21 +102,21 @@ async function renderTaxBreakdownChart(formData) {
             type: 'pie',
             hole: 0.55,
             marker: {
-                colors: ['#f59e0b', '#6366f1'],
-                line: { color: 'rgba(10,14,26,1)', width: 2 }
+                colors: ['#e5a63e', '#4f6df5'],
+                line: { color: c.pieBorder, width: 2 }
             },
             textinfo: 'label+value',
-            textfont: { size: 12, color: '#f1f5f9' },
+            textfont: { size: 12, color: c.titleColor },
             hovertemplate: '%{label}: ₹%{value:,.0f}<extra></extra>'
         };
 
         const layout = {
-            ...plotlyLayout,
-            title: { text: 'Tax by Regime', font: { size: 14, color: '#f1f5f9' } },
+            ...getPlotlyLayout(),
+            title: { text: 'Tax by Regime', font: { size: 14, color: c.titleColor } },
             annotations: [{
                 text: `₹${Math.min(oldTax, newTax).toLocaleString('en-IN')}`,
                 showarrow: false,
-                font: { size: 16, color: '#10b981', family: 'JetBrains Mono' }
+                font: { size: 16, color: c.highlight, family: 'JetBrains Mono' }
             }]
         };
 
@@ -114,6 +132,7 @@ async function renderRegimeComparisonChart(formData) {
         const result = await API.compareRegimes(formData);
         if (result.status !== 'success') return;
 
+        const c = getPlotlyColors();
         const comp = result.data.comparison;
         const oldR = comp.old_regime;
         const newR = comp.new_regime;
@@ -124,19 +143,19 @@ async function renderRegimeComparisonChart(formData) {
 
         const trace1 = {
             x: categories, y: oldValues, name: 'Old Regime',
-            type: 'bar', marker: { color: 'rgba(245, 158, 11, 0.7)' }
+            type: 'bar', marker: { color: 'rgba(229, 166, 62, 0.7)' }
         };
         const trace2 = {
             x: categories, y: newValues, name: 'New Regime',
-            type: 'bar', marker: { color: 'rgba(99, 102, 241, 0.7)' }
+            type: 'bar', marker: { color: 'rgba(79, 109, 245, 0.7)' }
         };
 
         const layout = {
-            ...plotlyLayout,
-            title: { text: 'Regime Comparison', font: { size: 14, color: '#f1f5f9' } },
+            ...getPlotlyLayout(),
+            title: { text: 'Regime Comparison', font: { size: 14, color: c.titleColor } },
             barmode: 'group',
-            xaxis: { tickangle: -20, gridcolor: 'rgba(255,255,255,0.05)' },
-            yaxis: { gridcolor: 'rgba(255,255,255,0.05)', title: 'Amount (₹)' }
+            xaxis: { tickangle: -20, gridcolor: c.gridColor },
+            yaxis: { gridcolor: c.gridColor, title: 'Amount (₹)' }
         };
 
         Plotly.newPlot('chart-regime-comparison', [trace1, trace2], layout, plotlyConfig);

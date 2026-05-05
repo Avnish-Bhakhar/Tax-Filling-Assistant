@@ -45,7 +45,7 @@ async function checkModelStatus() {
         }
     } catch (e) {
         document.getElementById('model-status-text').textContent = 'Connecting...';
-        document.querySelector('.status-dot').style.background = '#f59e0b';
+        document.querySelector('.status-dot').style.background = '#e5a63e';
     }
 }
 
@@ -119,12 +119,12 @@ function displayTaxResults(data, formData) {
 
     content.innerHTML = `
         <div class="result-card">
-            <h3>🏆 AI Tax Computation Result</h3>
+            <h3>AI Tax Computation Result</h3>
             <div class="result-grid">
                 <div class="result-item">
                     <div class="label">Recommended Regime</div>
                     <div class="value highlight">${recommended.toUpperCase()}</div>
-                    <span class="regime-badge ${recommended}">${recommended === 'old' ? '📋 Old Regime' : '🆕 New Regime'}</span>
+                    <span class="regime-badge ${recommended}">${recommended === 'old' ? 'Old Regime' : 'New Regime'}</span>
                 </div>
                 <div class="result-item">
                     <div class="label">Total Tax Liability</div>
@@ -158,7 +158,7 @@ function displayTaxResults(data, formData) {
         </div>
 
         <div class="result-card">
-            <h3>📝 Step-by-Step Computation</h3>
+            <h3>Step-by-Step Computation</h3>
             <div class="result-steps">${(bestResult.computation_steps || []).join('\n')}</div>
         </div>
     `;
@@ -187,7 +187,7 @@ async function getRegimeRecommendation() {
 
             content.innerHTML = `
                 <div class="result-card">
-                    <h3>🤖 AI Regime Recommendation</h3>
+                    <h3>AI Regime Recommendation</h3>
                     <div class="result-grid">
                         <div class="result-item">
                             <div class="label">ML Recommended</div>
@@ -218,19 +218,19 @@ async function getRegimeRecommendation() {
                 </div>
 
                 <div class="result-card">
-                    <h3>🔒 Audit Risk Assessment (Bayesian Network)</h3>
+                    <h3>Audit Risk Assessment (Bayesian Network)</h3>
                     <div class="result-grid">
                         <div class="result-item">
                             <div class="label">Risk Level</div>
-                            <div class="value" style="color:${audit.risk_level === 'low' ? '#10b981' : audit.risk_level === 'medium' ? '#f59e0b' : '#f43f5e'}">${(audit.risk_level || 'N/A').toUpperCase()}</div>
+                            <div class="value" style="color:${audit.risk_level === 'low' ? 'var(--accent-teal)' : audit.risk_level === 'medium' ? 'var(--accent-amber)' : 'var(--accent-rose)'}">${(audit.risk_level || 'N/A').toUpperCase()}</div>
                         </div>
                         <div class="result-item">
                             <div class="label">Probability</div>
                             <div class="value">${audit.audit_probability || 0}%</div>
                         </div>
                     </div>
-                    ${audit.risk_factors?.length ? `<ul class="advice-list">${audit.risk_factors.map(f => `<li>⚠️ ${f}</li>`).join('')}</ul>` : ''}
-                    ${audit.recommendations?.length ? `<ul class="advice-list">${audit.recommendations.map(r => `<li>✅ ${r}</li>`).join('')}</ul>` : ''}
+                    ${audit.risk_factors?.length ? `<ul class="advice-list">${audit.risk_factors.map(f => `<li>${f}</li>`).join('')}</ul>` : ''}
+                    ${audit.recommendations?.length ? `<ul class="advice-list">${audit.recommendations.map(r => `<li>${r}</li>`).join('')}</ul>` : ''}
                 </div>
             `;
 
@@ -239,7 +239,7 @@ async function getRegimeRecommendation() {
     } catch (error) {
         showError('Failed to get AI recommendation. Ensure the backend is running.');
     } finally {
-        btn.innerHTML = '🤖 AI Regime Recommendation';
+        btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> AI Regime Recommendation';
     }
 }
 
@@ -260,7 +260,7 @@ async function getDeductionTips() {
 
             content.innerHTML = `
                 <div class="result-card">
-                    <h3>💡 AI Deduction Recommendations</h3>
+                    <h3>AI Deduction Recommendations</h3>
                     <div class="result-grid">
                         <div class="result-item">
                             <div class="label">Total Potential Savings</div>
@@ -280,9 +280,9 @@ async function getDeductionTips() {
                             <li>
                                 <strong>${r.section} — ${r.title || ''}</strong><br>
                                 ${r.reason}<br>
-                                ${r.potential_savings > 0 ? `💰 Potential savings: <strong>₹${r.potential_savings.toLocaleString('en-IN')}</strong>` : ''}
+                                ${r.potential_savings > 0 ? `Potential savings: <strong>₹${r.potential_savings.toLocaleString('en-IN')}</strong>` : ''}
                                 ${r.gap > 0 ? ` | Gap: ₹${r.gap.toLocaleString('en-IN')}` : ''}
-                                ${r.tip ? `<br>💡 ${r.tip}` : ''}
+                                ${r.tip ? `<br>${r.tip}` : ''}
                             </li>
                         `).join('')}
                     </ul>
@@ -293,7 +293,7 @@ async function getDeductionTips() {
     } catch (error) {
         showError('Failed to get deduction tips. Ensure the backend is running.');
     } finally {
-        btn.innerHTML = '💡 Smart Deduction Tips';
+        btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> Smart Deduction Tips';
     }
 }
 
@@ -302,8 +302,8 @@ function showError(msg) {
     const content = document.getElementById('results-content');
     section.classList.remove('hidden');
     content.innerHTML = `
-        <div class="result-card" style="border-color:rgba(244,63,94,0.3);">
-            <h3>⚠️ Connection Error</h3>
+        <div class="result-card" style="border-color:rgba(224,84,113,0.3);">
+            <h3>Connection Error</h3>
             <p style="color:var(--text-secondary);">${msg}</p>
             <p style="color:var(--text-muted);font-size:0.85rem;margin-top:0.75rem;">
                 Run these commands to start the server:<br>

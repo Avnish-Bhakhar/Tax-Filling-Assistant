@@ -69,7 +69,7 @@ async function classifyDocument() {
     } catch (e) {
         showDocError('Failed to classify document. Please ensure the backend is running.');
     } finally {
-        btn.innerHTML = '🧠 Classify Document';
+        btn.innerHTML = 'Classify Document';
     }
 }
 
@@ -93,7 +93,7 @@ async function extractDocumentData() {
     } catch (e) {
         showDocError('Failed to extract data. Please ensure the backend is running.');
     } finally {
-        btn.innerHTML = '📋 Extract Data';
+        btn.innerHTML = 'Extract Data';
     }
 }
 
@@ -142,7 +142,7 @@ Net Taxable Income: 9,72,600
 Total Tax: 1,07,640
 TDS Deducted: 1,07,640`;
     } finally {
-        btn.innerHTML = '📄 Load Sample Form 16';
+        btn.innerHTML = 'Load Sample Form 16';
     }
 }
 
@@ -156,7 +156,7 @@ function displayDocResults(classification, extraction) {
     if (classification) {
         html += `
             <div class="result-card">
-                <h3>🧠 Deep Learning Classification</h3>
+                <h3>Deep Learning Classification</h3>
                 <div class="result-grid">
                     <div class="result-item">
                         <div class="label">Document Type</div>
@@ -195,7 +195,7 @@ function displayDocResults(classification, extraction) {
 
         html += `
             <div class="result-card">
-                <h3>📋 NLP Data Extraction</h3>
+                <h3>NLP Data Extraction</h3>
                 <div class="result-grid">
                     <div class="result-item">
                         <div class="label">Fields Found</div>
@@ -230,7 +230,7 @@ function showDocError(msg) {
     container.classList.remove('hidden');
     content.innerHTML = `
         <div class="result-card" style="border-color:rgba(244,63,94,0.3);">
-            <h3>⚠️ Error</h3>
+            <h3>Error</h3>
             <p style="color:var(--text-secondary);">${msg}</p>
         </div>`;
 }

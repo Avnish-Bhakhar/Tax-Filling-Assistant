@@ -40,9 +40,9 @@
     align-items: center;
     gap: 1rem;
     padding: 0.75rem 1rem;
-    background: rgba(255,255,255,0.03);
+    background: var(--input-bg);
     border-radius: var(--radius-sm);
-    border-left: 3px solid var(--accent-indigo);
+    border-left: 3px solid var(--accent-primary);
     transition: var(--transition);
     animation: pathStepIn 0.4s ease backwards;
 }
@@ -63,7 +63,7 @@
 }
 
 .path-step:hover {
-    background: rgba(99, 102, 241, 0.08);
+    background: rgba(79, 109, 245, 0.06);
     border-left-color: var(--accent-cyan);
 }
 
@@ -108,13 +108,13 @@
     gap: 1.5rem;
     flex-wrap: wrap;
     padding: 0.75rem 1rem;
-    background: rgba(99, 102, 241, 0.08);
+    background: rgba(79, 109, 245, 0.06);
     border-radius: var(--radius-sm);
-    border: 1px solid rgba(99, 102, 241, 0.15);
+    border: 1px solid rgba(79, 109, 245, 0.12);
     font-size: 0.8rem;
     color: var(--text-secondary);
     margin-bottom: 1rem;
 }
 .search-info strong {
-    color: var(--accent-indigo);
+    color: var(--accent-primary);
 }

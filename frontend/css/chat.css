@@ -60,6 +60,10 @@
 .welcome-icon {
     font-size: 3rem;
     margin-bottom: 1rem;
+    color: var(--accent-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .chat-welcome h3 {
     font-size: 1.3rem;
@@ -93,8 +97,8 @@
     transition: var(--transition);
 }
 .suggestion-chip:hover {
-    background: rgba(99, 102, 241, 0.1);
-    border-color: var(--accent-indigo);
+    background: rgba(79, 109, 245, 0.08);
+    border-color: var(--accent-primary);
     color: var(--text-primary);
 }
 
@@ -131,8 +135,8 @@
     color: white;
 }
 .message.user .message-avatar {
-    background: rgba(16, 185, 129, 0.2);
-    color: var(--accent-emerald);
+    background: rgba(46, 196, 164, 0.15);
+    color: var(--accent-teal);
 }
 
 .message-bubble {
@@ -156,7 +160,7 @@
 .message-bubble pre {
     font-family: var(--font-mono);
     font-size: 0.8rem;
-    background: rgba(0,0,0,0.3);
+    background: var(--code-bg);
     padding: 0.75rem;
     border-radius: var(--radius-sm);
     margin-top: 0.5rem;
@@ -240,7 +244,7 @@
 }
 .btn-send:hover {
     transform: scale(1.05);
-    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+    box-shadow: var(--shadow-btn);
 }
 
 .chat-meta {

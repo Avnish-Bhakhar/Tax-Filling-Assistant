@@ -22,14 +22,16 @@ function initChat() {
         const messages = document.getElementById('chat-messages');
         messages.innerHTML = `
             <div class="chat-welcome">
-                <div class="welcome-icon">🤖</div>
-                <h3>Welcome to TaxBot AI!</h3>
+                <div class="welcome-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                </div>
+                <h3>Welcome to TaxBot AI</h3>
                 <p>I'm your intelligent tax filing assistant. Ask me anything about taxes!</p>
                 <div class="welcome-suggestions">
-                    <button class="suggestion-chip" onclick="sendSuggestion('Hello, help me file my taxes')">👋 Start Filing</button>
-                    <button class="suggestion-chip" onclick="sendSuggestion('Which tax regime should I choose?')">📊 Compare Regimes</button>
-                    <button class="suggestion-chip" onclick="sendSuggestion('What deductions can I claim?')">💰 Explore Deductions</button>
-                    <button class="suggestion-chip" onclick="sendSuggestion('Calculate my tax')">🧮 Calculate Tax</button>
+                    <button class="suggestion-chip" onclick="sendSuggestion('Hello, help me file my taxes')">Start Filing</button>
+                    <button class="suggestion-chip" onclick="sendSuggestion('Which tax regime should I choose?')">Compare Regimes</button>
+                    <button class="suggestion-chip" onclick="sendSuggestion('What deductions can I claim?')">Explore Deductions</button>
+                    <button class="suggestion-chip" onclick="sendSuggestion('Calculate my tax')">Calculate Tax</button>
                 </div>
             </div>`;
         document.getElementById('chat-intent-display').textContent = 'Intent: waiting...';
@@ -89,7 +91,11 @@ function addMessage(text, sender, suggestions = []) {
 
     const avatar = document.createElement('div');
     avatar.className = 'message-avatar';
-    avatar.textContent = sender === 'bot' ? '🤖' : '👤';
+    if (sender === 'bot') {
+        avatar.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>';
+    } else {
+        avatar.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>';
+    }
 
     const bubble = document.createElement('div');
     bubble.className = 'message-bubble';
@@ -98,7 +104,7 @@ function addMessage(text, sender, suggestions = []) {
     let formattedText = text
         .replace(/\n/g, '<br>')
         .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-        .replace(/`(.*?)`/g, '<code style="background:rgba(0,0,0,0.3);padding:0.1rem 0.3rem;border-radius:3px;font-family:var(--font-mono);font-size:0.8rem;">$1</code>');
+        .replace(/`(.*?)`/g, '<code style="background:var(--code-bg);padding:0.1rem 0.3rem;border-radius:3px;font-family:var(--font-mono);font-size:0.8rem;">$1</code>');
 
     bubble.innerHTML = formattedText;
 
@@ -130,7 +136,7 @@ function showTyping() {
     typingDiv.className = 'message bot';
     typingDiv.id = 'typing-indicator';
     typingDiv.innerHTML = `
-        <div class="message-avatar">🤖</div>
+        <div class="message-avatar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
         <div class="message-bubble">
             <div class="typing-indicator">
                 <span></span><span></span><span></span>

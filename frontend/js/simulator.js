@@ -93,7 +93,7 @@ async function runSimulation() {
         document.getElementById('sim-savings').textContent = '—';
         document.getElementById('chart-simulator').innerHTML = '<p style="color:var(--text-muted);text-align:center;padding:2rem;">Start the backend server to use the simulator</p>';
     } finally {
-        btn.innerHTML = '⚡ Run Simulation';
+        btn.innerHTML = 'Run Simulation';
         btn.disabled = false;
     }
 }
@@ -102,6 +102,10 @@ function renderSimulatorChart(comparison) {
     const oldR = comparison.old_regime;
     const newR = comparison.new_regime;
     const income = oldR.gross_income;
+
+    const c = typeof getPlotlyColors === 'function' ? getPlotlyColors() : {
+        textColor: '#8b95a8', titleColor: '#e8ecf4', gridColor: 'rgba(255,255,255,0.05)', bgColor: 'rgba(0,0,0,0)'
+    };
 
     // Waterfall-style bar chart showing tax components
     const categories = ['Gross Income', 'Std Deduction', 'Deductions', 'Taxable Income', 'Base Tax', 'Rebate', 'Cess', 'Total Tax'];
@@ -123,8 +127,8 @@ function renderSimulatorChart(comparison) {
         name: 'Old Regime',
         type: 'bar',
         marker: {
-            color: oldValues.map(v => v < 0 ? 'rgba(245, 158, 11, 0.3)' : 'rgba(245, 158, 11, 0.7)'),
-            line: { width: 1, color: 'rgba(255,255,255,0.1)' }
+            color: oldValues.map(v => v < 0 ? 'rgba(229, 166, 62, 0.3)' : 'rgba(229, 166, 62, 0.7)'),
+            line: { width: 1, color: c.gridColor }
         }
     };
 
@@ -134,28 +138,28 @@ function renderSimulatorChart(comparison) {
         name: 'New Regime',
         type: 'bar',
         marker: {
-            color: newValues.map(v => v < 0 ? 'rgba(99, 102, 241, 0.3)' : 'rgba(99, 102, 241, 0.7)'),
-            line: { width: 1, color: 'rgba(255,255,255,0.1)' }
+            color: newValues.map(v => v < 0 ? 'rgba(79, 109, 245, 0.3)' : 'rgba(79, 109, 245, 0.7)'),
+            line: { width: 1, color: c.gridColor }
         }
     };
 
     const layout = {
-        paper_bgcolor: 'rgba(0,0,0,0)',
-        plot_bgcolor: 'rgba(0,0,0,0)',
-        font: { family: 'Inter, sans-serif', color: '#94a3b8', size: 12 },
+        paper_bgcolor: c.bgColor,
+        plot_bgcolor: c.bgColor,
+        font: { family: 'Inter, sans-serif', color: c.textColor, size: 12 },
         margin: { t: 20, r: 20, b: 80, l: 70 },
         barmode: 'group',
         xaxis: {
             tickangle: -25,
-            gridcolor: 'rgba(255,255,255,0.05)'
+            gridcolor: c.gridColor
         },
         yaxis: {
-            gridcolor: 'rgba(255,255,255,0.05)',
+            gridcolor: c.gridColor,
             title: 'Amount (₹)',
             tickformat: ',.0f'
         },
         legend: {
-            font: { color: '#94a3b8' },
+            font: { color: c.textColor },
             orientation: 'h',
             y: -0.3
         }
