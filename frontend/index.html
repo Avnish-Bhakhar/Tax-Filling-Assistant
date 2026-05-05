@@ -51,6 +51,10 @@
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
                 <span>Documents</span>
             </button>
+            <button class="nav-tab" data-tab="about" id="nav-about">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                <span>About</span>
+            </button>
         </div>
         <div class="nav-actions">
             <button class="theme-toggle" id="theme-toggle" title="Toggle light/dark mode">
@@ -395,6 +399,238 @@
                         <div id="doc-results-content"></div>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- ABOUT TAB -->
+        <section id="tab-about" class="tab-content">
+            <div class="section-container">
+
+                <!-- About Us -->
+                <div class="about-hero">
+                    <h2 class="section-title">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        About This Project
+                    </h2>
+                    <div class="about-intro glass-card">
+                        <p class="about-lead">TaxBot AI is an intelligent tax filing assistant built to simplify how Indian taxpayers understand and file their income taxes. Rather than replacing professional advice, this tool serves as a companion that walks you through complex decisions using data-driven insights.</p>
+                        <p>This project was developed as part of the <strong>Artificial Intelligence coursework (Semester 4)</strong>, demonstrating practical applications of seven distinct AI techniques working together in a single, cohesive platform. From machine learning classification to natural language understanding, every component is built from scratch using real-world tax data and Indian tax regulations for FY 2024-25.</p>
+                        <div class="about-tech-row">
+                            <div class="about-tech-item">
+                                <div class="about-tech-value">7+</div>
+                                <div class="about-tech-label">AI Models</div>
+                            </div>
+                            <div class="about-tech-item">
+                                <div class="about-tech-value">FastAPI</div>
+                                <div class="about-tech-label">Backend</div>
+                            </div>
+                            <div class="about-tech-item">
+                                <div class="about-tech-value">Python</div>
+                                <div class="about-tech-label">Language</div>
+                            </div>
+                            <div class="about-tech-item">
+                                <div class="about-tech-value">Plotly</div>
+                                <div class="about-tech-label">Visualizations</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI Models Section -->
+                <h2 class="section-title" style="margin-top:3rem;">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                    AI Models &amp; Architecture
+                </h2>
+                <p class="section-desc">Each model serves a specific purpose in the tax filing pipeline. Here is how they work together.</p>
+
+                <div class="models-grid">
+
+                    <!-- Model 1: A* Search -->
+                    <div class="model-card glass-card">
+                        <div class="model-card-header">
+                            <div class="model-icon" style="background: linear-gradient(135deg, #4f6df5, #38b6d2);">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                            </div>
+                            <div>
+                                <h3>A* State-Space Search</h3>
+                                <span class="model-badge">Search Algorithm</span>
+                            </div>
+                        </div>
+                        <p class="model-desc">Models the tax filing process as a graph where each state represents a filing step and edges are transitions. Uses an admissible heuristic based on data completeness to find the optimal, lowest-cost filing path from start to submission.</p>
+                        <div class="model-details">
+                            <div class="model-detail-item"><span class="detail-label">Technique</span><span>A* Search with Priority Queue</span></div>
+                            <div class="model-detail-item"><span class="detail-label">Heuristic</span><span>Data completeness scoring</span></div>
+                            <div class="model-detail-item"><span class="detail-label">Use Case</span><span>Filing path optimization</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Model 2: ML Classification -->
+                    <div class="model-card glass-card">
+                        <div class="model-card-header">
+                            <div class="model-icon" style="background: linear-gradient(135deg, #2ec4a4, #38b6d2);">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                            </div>
+                            <div>
+                                <h3>ML Tax Regime Classifier</h3>
+                                <span class="model-badge">Classification</span>
+                            </div>
+                        </div>
+                        <p class="model-desc">An ensemble of Random Forest and Gradient Boosting classifiers that predicts whether the Old or New tax regime is optimal for a given taxpayer. Trained on synthetic taxpayer profiles with features including income level, deductions, HRA, and investment patterns.</p>
+                        <div class="model-details">
+                            <div class="model-detail-item"><span class="detail-label">Models</span><span>Random Forest + Gradient Boosting</span></div>
+                            <div class="model-detail-item"><span class="detail-label">Features</span><span>Income, deductions, HRA, investments</span></div>
+                            <div class="model-detail-item"><span class="detail-label">Use Case</span><span>Regime recommendation</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Model 3: ML Regression -->
+                    <div class="model-card glass-card">
+                        <div class="model-card-header">
+                            <div class="model-icon" style="background: linear-gradient(135deg, #e5a63e, #e05471);">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                            </div>
+                            <div>
+                                <h3>Tax Liability Predictor</h3>
+                                <span class="model-badge">Regression</span>
+                            </div>
+                        </div>
+                        <p class="model-desc">A Gradient Boosting Regressor that predicts expected tax liability with confidence intervals. Uses engineered features like log-income transformations and deduction-to-income ratios to capture non-linear tax slab boundaries.</p>
+                        <div class="model-details">
+                            <div class="model-detail-item"><span class="detail-label">Model</span><span>Gradient Boosting Regressor</span></div>
+                            <div class="model-detail-item"><span class="detail-label">Engineering</span><span>Log-income, deduction ratios</span></div>
+                            <div class="model-detail-item"><span class="detail-label">Use Case</span><span>Tax amount prediction</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Model 4: Bayesian Network -->
+                    <div class="model-card glass-card">
+                        <div class="model-card-header">
+                            <div class="model-icon" style="background: linear-gradient(135deg, #7c5cfc, #4f6df5);">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                            </div>
+                            <div>
+                                <h3>Bayesian Network</h3>
+                                <span class="model-badge">Probabilistic Reasoning</span>
+                            </div>
+                        </div>
+                        <p class="model-desc">Implements Bayes' theorem with Conditional Probability Tables to assess audit risk. Calculates the probability of an audit given income, deduction patterns, and chosen regime using likelihood modifiers derived from Indian tax norms.</p>
+                        <div class="model-details">
+                            <div class="model-detail-item"><span class="detail-label">Technique</span><span>Bayes' Theorem + CPTs</span></div>
+                            <div class="model-detail-item"><span class="detail-label">Inputs</span><span>Income, deductions, regime</span></div>
+                            <div class="model-detail-item"><span class="detail-label">Use Case</span><span>Audit risk assessment</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Model 5: Deep Learning -->
+                    <div class="model-card glass-card">
+                        <div class="model-card-header">
+                            <div class="model-icon" style="background: linear-gradient(135deg, #e05471, #e5a63e);">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                            </div>
+                            <div>
+                                <h3>Document Classifier</h3>
+                                <span class="model-badge">Deep Learning</span>
+                            </div>
+                        </div>
+                        <p class="model-desc">A Multi-Layer Perceptron neural network with a 256-128-64 architecture, ReLU activations, dropout regularization, and early stopping. Classifies uploaded tax documents into seven categories including Form 16, salary slips, and bank statements.</p>
+                        <div class="model-details">
+                            <div class="model-detail-item"><span class="detail-label">Architecture</span><span>MLP (256 → 128 → 64)</span></div>
+                            <div class="model-detail-item"><span class="detail-label">Activation</span><span>ReLU + Dropout</span></div>
+                            <div class="model-detail-item"><span class="detail-label">Use Case</span><span>Document classification</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Model 6: NLP Chatbot -->
+                    <div class="model-card glass-card">
+                        <div class="model-card-header">
+                            <div class="model-icon" style="background: linear-gradient(135deg, #38b6d2, #2ec4a4);">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                            </div>
+                            <div>
+                                <h3>NLP Chatbot Engine</h3>
+                                <span class="model-badge">Natural Language Processing</span>
+                            </div>
+                        </div>
+                        <p class="model-desc">A full NLP pipeline that processes user queries through tokenization, TF-IDF embeddings, a custom attention mechanism, and neural intent classification. Extracts entities like income amounts and deduction sections, then generates contextual responses.</p>
+                        <div class="model-details">
+                            <div class="model-detail-item"><span class="detail-label">Pipeline</span><span>TF-IDF → Attention → MLP</span></div>
+                            <div class="model-detail-item"><span class="detail-label">Intents</span><span>25+ tax-specific categories</span></div>
+                            <div class="model-detail-item"><span class="detail-label">Use Case</span><span>Conversational assistant</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Model 7: Generative AI -->
+                    <div class="model-card glass-card">
+                        <div class="model-card-header">
+                            <div class="model-icon" style="background: linear-gradient(135deg, #4f6df5, #7c5cfc);">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            </div>
+                            <div>
+                                <h3>Generative AI Engine</h3>
+                                <span class="model-badge">Generative AI</span>
+                            </div>
+                        </div>
+                        <p class="model-desc">Uses template-based generation with few-shot prompting, role-based personas (tax expert), and chain-of-thought reasoning to produce human-readable tax summaries, step-by-step explanations, and personalized filing recommendations.</p>
+                        <div class="model-details">
+                            <div class="model-detail-item"><span class="detail-label">Techniques</span><span>Few-shot, CoT, role-based</span></div>
+                            <div class="model-detail-item"><span class="detail-label">Output</span><span>Tax summaries &amp; explanations</span></div>
+                            <div class="model-detail-item"><span class="detail-label">Use Case</span><span>Report generation</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Model 8: Deduction Recommender -->
+                    <div class="model-card glass-card">
+                        <div class="model-card-header">
+                            <div class="model-icon" style="background: linear-gradient(135deg, #2ec4a4, #4f6df5);">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                            </div>
+                            <div>
+                                <h3>Deduction Recommender</h3>
+                                <span class="model-badge">Heuristic Optimization</span>
+                            </div>
+                        </div>
+                        <p class="model-desc">A greedy heuristic optimizer that scans your current deduction usage against all available sections under Indian tax law. It identifies untapped savings opportunities and ranks them by marginal tax rate impact for maximum benefit.</p>
+                        <div class="model-details">
+                            <div class="model-detail-item"><span class="detail-label">Strategy</span><span>Greedy optimization</span></div>
+                            <div class="model-detail-item"><span class="detail-label">Sections</span><span>80C, 80D, 80CCD, 80G, 24(b)</span></div>
+                            <div class="model-detail-item"><span class="detail-label">Use Case</span><span>Savings maximization</span></div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Tech Stack -->
+                <h2 class="section-title" style="margin-top:3rem;">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    Technology Stack
+                </h2>
+                <div class="tech-stack-grid">
+                    <div class="tech-item glass-card">
+                        <strong>Backend</strong>
+                        <span>Python, FastAPI, Uvicorn</span>
+                    </div>
+                    <div class="tech-item glass-card">
+                        <strong>Machine Learning</strong>
+                        <span>scikit-learn (Random Forest, GBM, MLP)</span>
+                    </div>
+                    <div class="tech-item glass-card">
+                        <strong>NLP</strong>
+                        <span>NLTK, TF-IDF, Custom Attention</span>
+                    </div>
+                    <div class="tech-item glass-card">
+                        <strong>Visualization</strong>
+                        <span>Plotly.js, interactive charts</span>
+                    </div>
+                    <div class="tech-item glass-card">
+                        <strong>Frontend</strong>
+                        <span>HTML5, CSS3, Vanilla JavaScript</span>
+                    </div>
+                    <div class="tech-item glass-card">
+                        <strong>Data</strong>
+                        <span>pandas, NumPy, JSON configs</span>
+                    </div>
+                </div>
+
             </div>
         </section>
     </main>
